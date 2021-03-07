@@ -33,7 +33,7 @@ public:
     }
 
     //for binary searching in fenwick tree.
-    int findkth(int k) { // find largest index such that the sum(idx) <= k
+    T findkth(int k) { // find largest index such that the sum(idx) <= k
         int ind = -1; int x = size(data);
         int bits;
         for (bits = 0; x != 0; ++ bits) x >>= 1;
@@ -44,7 +44,7 @@ public:
                 k -= data[ind];
             }
         }
-        return ind; // return -1 if k < sum(1).
+        return (T)ind; // return -1 if k < sum(1).
     }
 
     void printpref() { //for debugging incase. don't forget to commentout.
