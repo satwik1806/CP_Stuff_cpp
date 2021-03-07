@@ -12,7 +12,7 @@ void precompute() {
     }
 }
 
-void pf(int n) {
+vector<int> pf(int n) {
     vector<int> res;
     while (n != 1) {
         int p = spf[n];
