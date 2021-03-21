@@ -1,4 +1,4 @@
-const int N = 10000000;
+const int N = 1e7;
 int spf[N + 1];
 void precompute(){
     for (int i = 2; i <= N; ++i){
