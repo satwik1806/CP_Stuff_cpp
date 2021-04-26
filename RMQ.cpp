@@ -1,6 +1,6 @@
 //Range Queries. 
 // Author - Satwik_Tiwari
-int a[mxn];
+int arr[mxn];
 template<typename T>
 class RangeQuery{
     private:
@@ -9,7 +9,7 @@ class RangeQuery{
         RangeQuery(int n){ 
             vector<int> temp;
             for(int i=0;i<n;i++){
-                temp.push_back(a[i]);
+                temp.push_back(arr[i]);
             }
             data.push_back(temp);
             int i = 1;
