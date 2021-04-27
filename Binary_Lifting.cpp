@@ -1,5 +1,7 @@
 //this is just an idea of how to implement.
 //always implement it fresh.
+//author - Satwik_Tiwari
+
 
 #include<bits/stdc++.h>
 using namespace std;
