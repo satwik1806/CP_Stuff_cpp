@@ -12,6 +12,7 @@ int arr [mxn], seg_tree[mxn];
 int N;
 
 void build(int lo = 0, int hi = N-1, int pos = 1){
+    assert(lo <= hi);
     if(lo == hi) {
         seg_tree[pos] = arr[lo]; return;
     }
