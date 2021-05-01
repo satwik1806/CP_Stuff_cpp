@@ -1,5 +1,6 @@
 const int N = 1e7;
 int spf[N + 1];
+vector<int> pr;
 void precompute(){
     for (int i = 2; i <= N; ++i){
         if (spf[i] == 0){
