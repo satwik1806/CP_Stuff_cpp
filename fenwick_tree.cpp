@@ -1,12 +1,12 @@
-// Fenwick tree. kindaa dynamic prefix sum
+// Fenwick tree.
 // author - Satwik_Tiwari
-int a[mxn];
 template <typename T>
 class BinaryIndexedTree {
 private:
     vector<T> data;
 public:
-    BinaryIndexedTree(int n) : data(n) {
+    BinaryIndexedTree(vector<T> a){ // make sure not to pass global vector of size = mxn;
+        int n = a.size(); data.resize(n);
         for (int i = 0; i < n; i++) data[i] = a[i];
         for (int i = 0; i < n; i++) {
             int j = i | (i + 1);
@@ -15,7 +15,8 @@ public:
         }
     }
 
-    T sum(int i) { // ask queries like [0,i)
+    T sum(int i) { // ask queries like [0,i]
+        i++;
         T s = T();
         s = 0;
         while (i) {
@@ -50,8 +51,6 @@ public:
     void printpref() { //for debugging incase. don't forget to commentout.
         vector<int> out;
         for (int i = 1; i <= size(data); i++) out.push_back(sum(i));
-        debug(out);
+        debug() << print(out);
     }
 };
-
-//update array a in main.
