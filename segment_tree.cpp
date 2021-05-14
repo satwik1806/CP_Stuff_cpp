@@ -23,7 +23,7 @@ void build(int lo = 0, int hi = N-1, int pos = 1){
 
 void update(int ind, int val, int lo = 0, int hi = N-1, int pos = 1){ //0 indexed. arr[ind] = val.
     if(lo == hi){
-        seg_tree[pos] = val; arr[pos] = val; return;
+        seg_tree[pos] = val; arr[ind] = val; return;
     }
     int mid = (lo + hi)/2;
     if(mid >= ind) update(ind,val,lo,mid,2*pos);
