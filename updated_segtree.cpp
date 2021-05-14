@@ -36,7 +36,7 @@ public:
     }
     void update_it_for_me(int ind, int val, int lo, int hi, int pos){ //0 indexed. arr[ind] = val.
         if(lo == hi){
-            seg_tree[pos] = val; arr[pos] = val; return;
+            seg_tree[pos] = val; arr[ind] = val; return;
         }
         int mid = (lo + hi)/2;
         if(mid >= ind) update_it_for_me(ind,val,lo,mid,2*pos);
