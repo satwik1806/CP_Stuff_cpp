@@ -76,6 +76,6 @@ public:
         if (a == b) return a;
         a = time[a]; b = time[b];
         if (a > b) swap(a, b);
-        return path[rmq.query(a, b)];
+        return path[rmq.query(a, b - 1)];
     }
 };
