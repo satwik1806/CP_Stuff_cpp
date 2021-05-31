@@ -102,7 +102,7 @@ int find(int x){
 }
 
 /*
-it will be really better not to insert element more than 1e6.
+it will be really better not to insert element greater than 1e6.
 as its just useless if you're just inserting 1e6 numbers.
 */
 
