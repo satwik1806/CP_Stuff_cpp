@@ -45,6 +45,19 @@ int power(int x, int y, int M) {int res = 1; while (y > 0) {if (y & 1) res = (re
 int power(int x, int y) {int res = 1; while (y > 0) {if (y & 1) res = (res * x); y >>= 1; x = (x * x);} return res;}
 const int mxn = 1e6 + 6, mod = 1e9+7, inf = 1e18 ; int t,casee = 1;
 
+/*
+1. find number of occurences of string t in s.
+sol - given in code.
+2. find number of times prefix of s present in string s for each prefix. (try remembering definition of prefix function).
+sol. if pre[i] = 2. then there exist max s[0:1] which occurs here. so make ans[0]++ and ans[1]++. 
+      for(int i=0;i<n;i++) for(int j=0;j<=pre[i];j++) ans[j]++; // use prefix sum to make it linear.
+3. find number of different substring in s. can use hashing or this prefix function.
+sol - let k is number of diff substring in s. can you find the same in s + char ? yes !! similar to all the suffix not occuring anywhere else.
+      just reverse the string ans use prefix sum.
+
+AMAZING BLOG ON CP-ALGORITHMS. DO GIVE A READ FOR REVISION - https://cp-algorithms.com/string/prefix-function.html
+*/
+
 vector<int> prefix_function(string s) { // pre[i] is the max length prefix also present in suffix of s[0:i].
     int n = s.size();
     vector<int> pre(n);
