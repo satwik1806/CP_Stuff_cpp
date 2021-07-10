@@ -59,7 +59,7 @@ public:
         }
         int mid = (lo + hi) / 2;
         update_it_for_me(l,r,val,lo,mid,2*pos);update_it_for_me(l,r,val,mid+1,hi,2*pos+1);
-        seg_tree[pos] = min(seg_tree[2*pos], seg_tree[2*pos + 1]);
+        seg_tree[pos] = func(seg_tree[2*pos], seg_tree[2*pos + 1]);
     }
 
     T query(int l, int r){
@@ -81,6 +81,6 @@ public:
             return seg_tree[pos];
         int mid = (lo + hi) / 2;
         int val1 = query_it_for_me(l,r,lo,mid,2*pos);int val2 = query_it_for_me(l,r,mid+1,hi,2*pos+1);
-        return min(val1, val2);
+        return func(val1, val2);
     }
 };
