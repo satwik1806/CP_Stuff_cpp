@@ -5,35 +5,34 @@ private:
         T sum;
         T maxpref;
         T maxsuff;
-        T mx;
-        T mn;
         T maxsubarray;
         void debugger(){
-            debug() << print(sum) print(maxpref) print(maxsuff) print(mx) print(mn) print(maxsubarray);
+            debug() << print(sum) print(maxpref) print(maxsuff) print(maxsubarray);
         }
     };
     vector<node> arr; vector<node> seg_tree;
     int N; node def;
 public:
+    // initiate a new node
+    node initiate(int val) {return node{val,val,val,val};};
+
     // change default accordingly.
     Segment_Tree(vector<T> a){ //make sure not to pass global vector of size = mxn;
         N = a.size(); arr.resize(N);
         for(int i=0;i<N;i++) {
-            arr[i] = node{a[i], a[i], a[i], a[i], a[i], a[i]};
+            arr[i] = initiate(a[i]);
         }
         seg_tree.resize(4*N + 10);
-        def = node{0,-inf,-inf,-inf,inf,-inf};
+        def = node{0,-inf,-inf,-inf};
         build();
     }
 
     node merge(node a, node b){
         node temp;
         temp.sum = a.sum + b.sum;
-        temp.maxpref = max((T)0,max(a.maxpref,a.sum + b.maxpref));
-        temp.maxsuff = max((T)0,max(b.maxsuff,b.sum + a.maxsuff));
-        temp.mx = max(a.mx,b.mx);
-        temp.mn = min(a.mn,b.mn);
-        temp.maxsubarray = max(max((T)0,a.maxsuff) + max((T)0,b.maxpref),max(a.maxsubarray,b.maxsubarray));
+        temp.maxpref = max({0ll,a.maxpref, a.sum + b.maxpref});
+        temp.maxsuff = max({0ll,b.maxsuff, b.sum + a.maxsuff});
+        temp.maxsubarray = max({a.maxsubarray,b.maxsubarray,a.maxsuff + b.maxpref,0ll});
         return temp;
     }
 
@@ -56,8 +55,8 @@ public:
     }
     void update_it_for_me(int ind, T val, int lo, int hi, int pos){ //0 indexed. arr[ind] = val.
         if(lo == hi){
-            seg_tree[pos] = node{val,val,val,val,val,val};
-            arr[ind] = {val,val,val,val,val,val}; return;
+            seg_tree[pos] = initiate(val);
+            arr[ind] = initiate(val); return;
         }
         int mid = (lo + hi)/2;
         if(mid >= ind) update_it_for_me(ind,val,lo,mid,2*pos);
